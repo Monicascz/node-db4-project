@@ -8,13 +8,13 @@ exports.up = function(knex) {
     })
  .createTable("ingredients", table=>{
     table.increments("ingredient_id")
-    table.string("ingredient_name").notNullable()
+    table.string("ingredient_name", 30).notNullable()
  }) // ingredients table doesn't have a foreign key so it is a good ont to go to next.   
  .createTable("steps", table=>{
      table.increments("step_id")
-     table.integer("step_number")
+     table.integer("step_number", 30)
         .unsigned()
-     table.string("step_instructions")
+     table.string("step_instructions", 300)
      table.integer("recipe_id")
         .unsigned()
         .notNullable()
