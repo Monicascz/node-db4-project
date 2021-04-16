@@ -13,6 +13,16 @@ router.get('/', (req,res,next)=>{
  .catch(next) 
 })
 
+router.get('/:recipe_id', (req,res,next)=>{
+    const {recipe_id} = req.params
+    Recipes.getById(recipe_id)
+    .then(data=>{
+        res.json(data)
+    })  
+    .catch(next) 
+   })
+
+
 router.use((err, req, res, next) => { // eslint-disable-line
     res.status(err.status || 500).json({
       sageAdvice: 'Finding the real error is 90% of the bug fix',
